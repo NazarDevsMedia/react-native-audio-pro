@@ -1,16 +1,19 @@
-import { NativeModules, NativeEventEmitter, Platform, DeviceEventEmitter } from 'react-native';
+import { DeviceEventEmitter, NativeEventEmitter, Platform } from 'react-native';
 
 import { internalStore } from './internalStore';
+import NativeAudioPro from './specs/NativeAudioPro';
 import { logDebug } from './utils';
 import { AudioProEventType } from './values';
 
 import type { AudioProEvent } from './types';
 
-const NativeAudioPro = NativeModules.AudioPro;
-
 /**
  * Event emitter for main audio player events
  * Used to communicate between native code and JavaScript
+ *
+ * In the new architecture:
+ * - TurboModules support event emission via RCTEventEmitter mixin
+ * - Both platforms use NativeEventEmitter for consistency
  */
 export const emitter =
 	Platform.OS === 'android' ? DeviceEventEmitter : new NativeEventEmitter(NativeAudioPro);

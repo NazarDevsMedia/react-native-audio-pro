@@ -1,6 +1,6 @@
 {
-	"name": "react-native-audio-pro",
-	"version": "11.0.0-beta.2",
+	"name": "react-native-audio-pro-nazar-devs-media",
+	"version": "1.0.0",
 	"description": "A React Native module for audio playback from remote URLs, ideal for audiobook and podcast apps, with background playback, lock screen notification controls on Android and iOS, and web support.",
 	"source": "./src/index",
 	"react-native": "./src/index",
@@ -72,11 +72,6 @@
 		"web",
 		"react-native-web"
 	],
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/evergrace-co/react-native-audio-pro.git"
-	},
-	"author": "Brad Flood <hey@bradflood.com> (https://github.com/bradfloodx)",
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/evergrace-co/react-native-audio-pro/issues"
@@ -108,6 +103,7 @@
 		"react": "19.0.0",
 		"react-native": "0.78.1",
 		"react-native-builder-bob": "^0.36.0",
+		"react-native-codegen": "^0.70.7",
 		"react-test-renderer": "19.0.0",
 		"release-it": "^17.10.0",
 		"turbo": "^1.10.7",
@@ -126,5 +122,14 @@
 	"packageManager": "yarn@3.6.1",
 	"dependencies": {
 		"zustand": "^5.0.3"
+	},
+	"codegenConfig": {
+		"libraries": [
+			{
+				"name": "AudioPro",
+				"type": "all",
+				"jsSrcsDir": "src/specs"
+			}
+		]
 	}
 }

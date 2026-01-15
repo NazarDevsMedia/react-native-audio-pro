@@ -19,6 +19,15 @@ buildscript {
 apply plugin: "com.android.library"
 apply plugin: "kotlin-android"
 
+// Apply React Native Gradle plugin for CodeGen support
+def isNewArchitectureEnabled() {
+	return project.hasProperty("newArchEnabled") &&  project.newArchEnabled == "true"
+}
+
+if (isNewArchitectureEnabled()) {
+	apply plugin: "com.facebook.react"
+}
+
 
 def getExtOrIntegerDefault(name) {
 	return rootProject.ext.has(name) ? rootProject.ext.get(name) : (project.properties["AudioPro_" + name]).toInteger()
@@ -78,6 +87,11 @@ dependencies {
 	implementation "com.facebook.react:react-android"
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 
+	// CodeGen and TurboModule dependencies
+	if (isNewArchitectureEnabled()) {
+		implementation project(":ReactAndroid")
+	}
+
 	implementation "androidx.media3:media3-exoplayer:1.6.0"
 	implementation "androidx.media3:media3-session:1.6.0"
 	implementation "androidx.media3:media3-common:1.6.0"
@@ -88,3 +102,4 @@ dependencies {
 
 	implementation "org.jetbrains.kotlinx:kotlinx-coroutines-guava:1.9.0"
 }
+

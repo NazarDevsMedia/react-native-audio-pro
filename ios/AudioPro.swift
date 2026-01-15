@@ -4,8 +4,20 @@ import React
 import MediaPlayer
 import UIKit
 
+// Import the generated spec for new architecture
+#if RCT_NEW_ARCH_ENABLED
+import AudioProSpec
+#endif
+
+#if RCT_NEW_ARCH_ENABLED
+@objc(AudioPro)
+class AudioPro: NSObject, AudioProSpec, RCTEventEmitter {
+	// Synthesize required bridge property for EventEmitter
+	@synthesize bridge = _bridge
+#else
 @objc(AudioPro)
 class AudioPro: RCTEventEmitter {
+#endif
 
 	////////////////////////////////////////////////////////////
 	// MARK: - Properties & Constants
@@ -84,6 +96,16 @@ class AudioPro: RCTEventEmitter {
 	override static func requiresMainQueueSetup() -> Bool {
 		return false
 	}
+
+	////////////////////////////////////////////////////////////
+	// MARK: - Module Setup (New Architecture)
+	////////////////////////////////////////////////////////////
+
+	#if RCT_NEW_ARCH_ENABLED
+	override static func moduleName() -> String! {
+		return "AudioPro"
+	}
+	#endif
 
 	override func startObserving() {
 		hasListeners = true

@@ -1,0 +1,11 @@
+[31m[1mInternal Error[22m[39m: react-native-audio-pro@workspace:.: This package doesn't seem to be present in your lockfile; run "yarn install" to update the lockfile
+    at V0.getCandidates (/Users/zabirko/dev/react-native-audio-pro/.yarn/releases/yarn-3.6.1.cjs:435:5145)
+    at kf.getCandidates (/Users/zabirko/dev/react-native-audio-pro/.yarn/releases/yarn-3.6.1.cjs:391:1264)
+    at /Users/zabirko/dev/react-native-audio-pro/.yarn/releases/yarn-3.6.1.cjs:439:8033
+    at df (/Users/zabirko/dev/react-native-audio-pro/.yarn/releases/yarn-3.6.1.cjs:390:11070)
+    at ge (/Users/zabirko/dev/react-native-audio-pro/.yarn/releases/yarn-3.6.1.cjs:439:8013)
+    at async Promise.allSettled (index 0)
+    at async io (/Users/zabirko/dev/react-native-audio-pro/.yarn/releases/yarn-3.6.1.cjs:390:10398)
+    at async /Users/zabirko/dev/react-native-audio-pro/.yarn/releases/yarn-3.6.1.cjs:439:8545
+    at async ti.startProgressPromise (/Users/zabirko/dev/react-native-audio-pro/.yarn/releases/yarn-3.6.1.cjs:390:47579)
+    at async je.resolveEverything (/Users/zabirko/dev/react-native-audio-pro/.yarn/releases/yarn-3.6.1.cjs:439:6573)

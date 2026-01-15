@@ -25,4 +25,9 @@ Pod::Spec.new do |s|
   else
     s.dependency "React-Core"
   end
+
+  # New Architecture support
+  # Optional dependency on Folly for new architecture
+  s.dependency "React-Codegen"
+  s.dependency "RCT-Folly", :podspec => "#{Pod::Config.instance.repos_dir}/facebook-react-native/third-party-podspecs/RCT-Folly.podspec" if ENV['RCT_NEW_ARCH_ENABLED'] == '1'
 end

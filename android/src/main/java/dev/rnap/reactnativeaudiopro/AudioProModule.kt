@@ -5,11 +5,21 @@ import com.facebook.react.bridge.ReactContextBaseJavaModule
 import com.facebook.react.bridge.ReactMethod
 import com.facebook.react.bridge.ReadableMap
 import com.facebook.react.bridge.LifecycleEventListener
+import com.facebook.react.module.annotations.ReactModule
+import com.facebook.react.modules.core.DeviceEventManagerModule
 import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
+/**
+ * AudioProModule - Hybrid implementation supporting both architectures
+ * 
+ * This module supports both the legacy React Native architecture
+ * (via ReactContextBaseJavaModule) and the new architecture
+ * (via TurboModule pattern with generated spec).
+ */
+@ReactModule(name = AudioProModule.NAME)
 class AudioProModule(private val reactContext: ReactApplicationContext) :
 	ReactContextBaseJavaModule(reactContext), LifecycleEventListener {
 
@@ -131,6 +141,11 @@ class AudioProModule(private val reactContext: ReactApplicationContext) :
     @ReactMethod fun addListener(eventName: String) {}
 
     @ReactMethod fun removeListeners(count: Int) {}
+
+	private fun emitEvent(eventName: String, eventData: com.facebook.react.bridge.WritableMap) {
+		reactContext.getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter::class.java)
+			.emit(eventName, eventData)
+	}
 
 	override fun getName(): String {
 		return NAME

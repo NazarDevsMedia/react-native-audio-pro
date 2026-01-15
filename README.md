@@ -52,6 +52,37 @@ React Native Audio Pro also includes a few optional capabilities that support mo
 - **iOS:** iOS 17.0 or higher
 - **Android:** Android 8.0 (API 26) or higher
 
+## 🏗️ Architecture Support
+
+React Native Audio Pro supports both the **legacy** and **new React Native architectures**:
+
+| Architecture | Support | Notes |
+|---|---|---|
+| **Legacy Bridge** | ✅ Fully supported | Default - uses classic RCTBridge |
+| **New Architecture (Turbo Modules + Fabric)** | ✅ Fully supported | Opt-in - requires RN 0.73+ for best results |
+
+### Using the New Architecture
+
+The library automatically detects and supports the new architecture. To enable it in your app:
+
+**iOS:**
+```bash
+RCT_NEW_ARCH_ENABLED=1 pod install
+```
+
+**Android:**
+```bash
+newArchEnabled=true yarn android
+```
+
+For detailed setup instructions, see [SETUP_NEW_ARCHITECTURE.md](./docs/SETUP_NEW_ARCHITECTURE.md).
+
+**Benefits of the new architecture:**
+- Faster method invocation via JavaScript Interface (JSI)
+- Type-safe native module specs
+- Better performance and smaller bundle sizes
+- Future-proof with latest React Native patterns
+
 ## 🚀 Installation
 
 ```bash
